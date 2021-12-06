@@ -58,7 +58,7 @@ public class MxKPreferencesWindowController: NSWindowController, NSToolbarDelega
             fatalError("Cannot open window")
         }
         
-        Bundle.module.loadNibNamed(xib, owner: nil, topLevelObjects: nil)
+        Bundle.module.loadNibNamed("MxKPreferencesWindowController", owner: nil, topLevelObjects: nil)
         self.init(windowNibName: "MxKPreferencesWindowController")
     }
 
