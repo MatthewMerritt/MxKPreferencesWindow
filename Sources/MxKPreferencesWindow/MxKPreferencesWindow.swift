@@ -1,5 +1,5 @@
 //
-//  MMPreferencesWindowController.swift
+//  MxKPreferencesWindowController.swift
 //  Swift-NSToolBar
 //
 //  Created by Matthew Merritt on 12/11/17.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public class MMPreferenceView {
+public class MxKPreferenceView {
     var title: String
     var icon: String
     var className: String
@@ -42,19 +42,19 @@ public class MMPreferenceView {
 
 }
 
-public class MMPreferencesWindowController: NSWindowController, NSToolbarDelegate, NSWindowDelegate {
+public class MxKPreferencesWindowController: NSWindowController, NSToolbarDelegate, NSWindowDelegate {
 
-    public static var shared: MMPreferencesWindowController = MMPreferencesWindowController()
+    public static var shared: MxKPreferencesWindowController = MxKPreferencesWindowController()
 
     var toolbar: NSToolbar? = nil
     var currentViewController: NSViewController!
     var currentView = ""
 
-    var preferenceViews = [MMPreferenceView]()
-    public var preferenceViewsToAdd = [MMPreferenceView]()
+    var preferenceViews = [MxKPreferenceView]()
+    public var preferenceViewsToAdd = [MxKPreferenceView]()
 
     convenience init() {
-        self.init(windowNibName: "MMPreferencesWindowController")
+        self.init(windowNibName: "MxKPreferencesWindowController")
     }
 
     override public func windowDidLoad() {
@@ -86,7 +86,7 @@ public class MMPreferencesWindowController: NSWindowController, NSToolbarDelegat
     }
 
     public func addPreferenceView(title: String, icon: String, className: String, identifier: String, nib: String) {
-        let preferenceView = MMPreferenceView(title: title, icon: icon, className: className, identifier: identifier, nib: nib)
+        let preferenceView = MxKPreferenceView(title: title, icon: icon, className: className, identifier: identifier, nib: nib)
         preferenceViewsToAdd.append(preferenceView)
     }
 
@@ -99,7 +99,7 @@ public class MMPreferencesWindowController: NSWindowController, NSToolbarDelegat
                 toolbarItem.label = view.title
                 toolbarItem.image = iconImage
                 toolbarItem.target = self
-                toolbarItem.action = #selector(MMPreferencesWindowController.viewSelected(_:))
+                toolbarItem.action = #selector(MxKPreferencesWindowController.viewSelected(_:))
 
                 return toolbarItem
             }
@@ -134,7 +134,7 @@ public class MMPreferencesWindowController: NSWindowController, NSToolbarDelegat
         loadView(preferenceView: preferenceViews.filter { $0.toolbarIdentifier == sender.itemIdentifier }.first!, withAnimation: true)
     }
 
-    func loadView(preferenceView: MMPreferenceView, withAnimation shouldAnimate: Bool) {
+    func loadView(preferenceView: MxKPreferenceView, withAnimation shouldAnimate: Bool) {
         if ( currentView ==  preferenceView.toolbarIdentifier.rawValue) {
             return
         }
@@ -178,7 +178,7 @@ extension String {
 class StringClassConverter<T> {
 
     static func convert(string className: String) -> T.Type? {
-        let theNameSpace = "MMPreferencesWindow"
+        let theNameSpace = "MxKPreferencesWindow"
         guard let nameSpace = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String else {
             return nil
         }

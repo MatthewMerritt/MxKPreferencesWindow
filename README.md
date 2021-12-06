@@ -1,4 +1,4 @@
-# MMPreferencesWindow
+# MxKPreferencesWindow
 
 ## Example
 
@@ -29,7 +29,7 @@ Create a NIB view for the settings you want, also create a NSView subclass that 
     
     let preferencesWindowController: MxKPreferencesWindowController = MxKPreferencesWindowController.shared
     
-    preferencesWindowController.addPreferenceView(title: "General", icon: "NSPreferencesGeneral", className: "MMPreferencesViewController", identifier: "GeneralView", nib: "GeneralView")
+    preferencesWindowController.addPreferenceView(title: "General", icon: "NSPreferencesGeneral", className: "MxKPreferencesViewController", identifier: "GeneralView", nib: "GeneralView")
 
     @IBAction func preferencesButtonAction(_ sender: Any) {
         preferencesWindowController.showWindow (nil)
