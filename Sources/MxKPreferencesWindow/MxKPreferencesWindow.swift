@@ -52,9 +52,14 @@ public class MxKPreferencesWindowController: NSWindowController, NSToolbarDelega
 
     var preferenceViews = [MxKPreferenceView]()
     public var preferenceViewsToAdd = [MxKPreferenceView]()
-
-    convenience init() {
-        self.init(windowNibName: "MxKPreferencesWindowController")
+    
+    convenience init(onwer: Any) {
+        guard let xib = Bundle.module.path(forResource: "MxKPreferencesWindowController", ofType: "xib") else {
+            fatalError("Cannot open window")
+        }
+        
+        Bundle.module.loadNibNamed(xib, owner: nil, topLevelObjects: nil)
+        self.init(windowNibName: xib)
     }
 
     override public func windowDidLoad() {
