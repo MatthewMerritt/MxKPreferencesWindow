@@ -22,6 +22,6 @@ let package = Package(
         .target(
             name: "MxKPreferencesWindow",
             dependencies: [],
-            resources: [.process("MxKPreferencesWindowController")]),
+            resources: [.process("MxKPreferencesWindowController.xib")]),
     ]
 )
