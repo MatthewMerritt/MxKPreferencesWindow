@@ -59,7 +59,7 @@ public class MxKPreferencesWindowController: NSWindowController, NSToolbarDelega
         }
         
         Bundle.module.loadNibNamed(xib, owner: nil, topLevelObjects: nil)
-        self.init(windowNibName: xib)
+        self.init(windowNibName: "MxKPreferencesWindowController")
     }
 
     override public func windowDidLoad() {
